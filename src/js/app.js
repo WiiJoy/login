@@ -3,6 +3,7 @@ import '../css/style.css';
 
 import UI from './config/ui.config';
 import {validate} from './helpers/validate';
+import {showInputError} from './views/form';
 
 const { form, inputEmail, inputPassword } = UI;
 const inputs = [inputEmail, inputPassword];
@@ -18,7 +19,10 @@ form.addEventListener('submit', (e) => {
 function onSubmit() {
     const isValidForm = inputs.every((el) => {
         const isValidInput = validate(el);
-
+        console.log(isValidInput);
+        if (!isValidInput) {
+            showInputError(el);
+        }
         return isValidInput;
     });
 
