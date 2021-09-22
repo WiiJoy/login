@@ -42,4 +42,25 @@ export function notify({ msg = 'Info message', className = 'alert-info', timeout
     const container = getContainer();
 
     container.insertAdjacentHTML('beforeend', template);
+
+    setTimeout(() => closeNotify(index), timeout);
+}
+
+
+export function closeNotify(index) {
+    let alert;
+
+    if (index === undefined) {
+        alert = document.querySelector('.notify-container .alert');
+    } else {
+        alert = document.querySelector(`.notify-container .alert[data-index="${index}"]`);
+    }
+
+    if (!alert) {
+        console.warn('Alert not found');
+        return;
+    }
+
+    const container = getContainer();
+    container.removeChild(alert);
 }

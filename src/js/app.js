@@ -37,11 +37,14 @@ async function onSubmit() {
         form.reset();
         // show success notify
         // notify({ msg: 'Login success', className: 'alert-success', timeout: 1000 })
+        notify({msg: 'Login success', className: 'alert-success'});
     } catch (error) {
         // show error notify
+        notify({msg: 'Login faild', className: 'alert-danger'});
     }
 }
 
-notify({msg: 'Some notification 1', className: 'alert-danger'});
-notify({msg: 'Some notification 2', className: 'alert-warning'});
-notify({msg: 'Some notification 3', className: 'alert-primary'});
+// notify({msg: 'Some notification 1', className: 'alert-danger'});
+// notify({msg: 'Some notification 2', className: 'alert-warning'});
+// notify({msg: 'Some notification 3', className: 'alert-primary'});
+
