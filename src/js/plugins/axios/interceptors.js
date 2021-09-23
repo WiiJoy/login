@@ -28,9 +28,15 @@ function getClearResponse(res) {
     return res.data;
 }
 
+function onError(err) {
+    console.dir(err);
+
+    return Promise.reject(err);
+}
+
 export default function (axios) {
     axios.interceptors.request.use(setToken);
 
     axios.interceptors.response.use(setTokenOnLogin);
-    axios.interceptors.response.use(getClearResponse);
+    axios.interceptors.response.use(getClearResponse, onError);
 }
